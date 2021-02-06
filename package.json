@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client",
+    "e2e"
+  ],
+  "scripts": {
+    "build:client": "yarn workspace engage-client build",
+    "dev": "yarn workspace engage-server dev",
+    "dev:debug": "yarn workspace engage-server dev:debug",
+    "heroku-postbuild": "yarn workspace engage-client build",
+    "start": "yarn workspace engage-server start",
+    "dev:cypress": "yarn workspace engage-server dev:e2e",
+    "e2e:open": "yarn workspace engage-e2e e2e:open",
+    "e2e:run": "yarn workspace engage-e2e e2e:run"
+  },
+  "engines": {
+    "node": "^14.15"
+  }
+}
