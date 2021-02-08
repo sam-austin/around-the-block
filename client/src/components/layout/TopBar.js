@@ -23,8 +23,8 @@ const TopBar = ({ user }) => {
   return (
     <div className="top-bar">
       <div className="top-bar-left">
-        <ul className="menu">
-          <li className="menu-text">App</li>
+        <ul className="menu callout">
+          <li className="menu-text">Around the Block</li>
           <li>
             <Link to="/">Home</Link>
           </li>
