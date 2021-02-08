@@ -7,6 +7,7 @@ const RegistrationForm = () => {
     email: "",
     password: "",
     passwordConfirmation: "",
+    userName:"",
   });
 
   const [errors, setErrors] = useState({});
@@ -15,13 +16,20 @@ const RegistrationForm = () => {
 
   const validateInput = (payload) => {
     setErrors({});
-    const { email, password, passwordConfirmation } = payload;
+    const { email, password, passwordConfirmation, userName } = payload;
     const emailRegexp = config.validation.email.regexp;
     let newErrors = {};
     if (!email.match(emailRegexp)) {
       newErrors = {
         ...newErrors,
         email: "is invalid",
+      };
+    }
+
+    if (userName.trim() == "") {
+      newErrors = {
+        ...newErrors,
+        userName: "is required",
       };
     }
 
@@ -86,18 +94,30 @@ const RegistrationForm = () => {
 
   return (
     <div className="grid-container" onSubmit={onSubmit}>
-      <h1>Register</h1>
-      <form>
+      <h1 className= "reg-form">Register</h1>
+      <form className="reg-form">
         <div>
           <label>
-            Email
+            <span className="reg-label">Email</span>
             <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
             <FormError error={errors.email} />
           </label>
         </div>
         <div>
           <label>
-            Password
+            <span className="reg-label">User Name</span>
+            <input
+              type="text"
+              name="userName"
+              value={userPayload.userName}
+              onChange={onInputChange}
+            />
+            <FormError error={errors.userName} />
+          </label>
+        </div>
+        <div>
+          <label>
+            <span className="reg-label">Password</span>
             <input
               type="password"
               name="password"
@@ -109,7 +129,7 @@ const RegistrationForm = () => {
         </div>
         <div>
           <label>
-            Password Confirmation
+            <span className="reg-label">Password Confirmation</span>
             <input
               type="password"
               name="passwordConfirmation"

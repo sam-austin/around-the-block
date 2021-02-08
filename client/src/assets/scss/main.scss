@@ -2,6 +2,14 @@
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
 // place global css here
+
+body {
+  background: url(https://images.unsplash.com/photo-1533875616-f804380c6b6e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80);
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 102vh;
+  min-width: 100vw;
+}
 *,
 *::before,
 *::after {
@@ -11,4 +19,23 @@
 :root {
   -moz-tab-size: 4;
   tab-size: 4;
+}
+
+#site-title {
+  display:flex;
+  justify-content: center;
+  font-family: 'Didot', sans-serif;
+  text-align: center;
+  align-items: center;
+  color: salmon
+}
+
+.menu {
+  color : whitesmoke;
+  font-family: 'Didot', sans-serif;
+  // font-weight: 900;
+}
+
+.reg-form {
+  font-family: 'Didot', sans-serif;
 }
