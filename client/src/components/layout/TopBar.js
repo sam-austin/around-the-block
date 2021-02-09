@@ -18,7 +18,12 @@ const TopBar = ({ user }) => {
     <li key="sign-out">
       <SignOutButton />
     </li>,
+    <li>
+      <Link to="/mymap">My Map</Link>
+    </li>
   ];
+
+  const emptyLiTag = <li></li>
 
   return (
     <div className="top-bar">
@@ -28,10 +33,11 @@ const TopBar = ({ user }) => {
           <li>
             <Link to="/">Home</Link>
           </li>
+          <ul className="menu">{user ? authenticatedListItems[1] : emptyLiTag}</ul>
         </ul>
       </div>
       <div className="top-bar-right">
-        <ul className="menu">{user ? authenticatedListItems : unauthenticatedListItems}</ul>
+        <ul className="menu">{user ? authenticatedListItems[0] : unauthenticatedListItems}</ul>
       </div>
     </div>
   );
