@@ -5,6 +5,8 @@ import {
   useLoadScript,
 } from "@react-google-maps/api";
 
+import SearchPlacesBar from "./SearchPlacesBar"
+
 const libraries = ["places"]
 
 const mapContainerStyle = {
@@ -28,6 +30,12 @@ const MyMap = props => {
   })
 
   const mapRef = useRef()
+
+  const panTo = React.useCallback(({lat, lng}) => {
+    mapRef.current.panTo({lat, lng})
+    mapRef.current.setZoom(16)
+  }, [])
+  
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
   }, [])
@@ -41,6 +49,8 @@ const MyMap = props => {
 
   return(
     <div>
+      <SearchPlacesBar panTo={panTo} />
+
       <GoogleMap 
         mapContainerStyle={mapContainerStyle} 
         zoom={14}
