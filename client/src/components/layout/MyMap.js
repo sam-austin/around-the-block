@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from "react";
+import React, { useState, useCallback, useRef } from "react"
 
 import {
   GoogleMap,
@@ -6,6 +6,7 @@ import {
 } from "@react-google-maps/api";
 
 import SearchPlacesBar from "./SearchPlacesBar"
+import MapMarkers from "./MapMarkers"
 
 const libraries = ["places"]
 
@@ -29,11 +30,23 @@ const MyMap = props => {
     libraries,
   })
 
+  const [markers, setMarkers] = useState([])
+
   const mapRef = useRef()
 
   const panTo = React.useCallback(({lat, lng}) => {
     mapRef.current.panTo({lat, lng})
     mapRef.current.setZoom(16)
+  }, [])
+
+  const onMapClick = useCallback(event => {
+    setMarkers(current => [
+      ...current, 
+      {
+        lat: event.latLng.lat(),
+        lng: event.latLng.lng(),
+      }
+    ])
   }, [])
   
   const onMapLoad = useCallback((map) => {
@@ -57,7 +70,12 @@ const MyMap = props => {
         center={center}
         options={options}
         onLoad={onMapLoad}
-      > 
+        onClick={onMapClick}
+      >
+        <MapMarkers
+          panTo={panTo}
+          markers={markers}
+        /> 
       </GoogleMap>
     </div>
   )
