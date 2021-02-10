@@ -23,39 +23,39 @@ const SearchPlacesBar = ({ panTo }) => {
     }
   })
 
+  const handleInput = (event) => {
+    setValue(event.target.value);
+  }
+
+  const handleSelect = async (address) => {
+    setValue(address, false);
+    clearSuggestions()
+
+    try {
+      const results = await getGeocode({ address })
+      const { lat, lng } = await getLatLng(results[0])
+      panTo({ lat, lng })
+    } catch (error) {
+      console.log("Error!", error);
+    }
+  }
+
   return (
     <div className="search">
-      <Combobox 
-        onSelect={async (address) => {
-          setValue(address, false)
-          clearSuggestions()
-
-          try {
-            const results = await getGeocode({ address });
-            const { lat, lng } = await getLatLng(results[0])
-            panTo({ lat, lng })
-            console.log(lat, lng)
-            console.log(results[0])
-          } catch(error) {
-            console.log("error!")
-          }
-        }}
-      >
+      <Combobox onSelect={handleSelect}>
         <ComboboxInput 
           value={value} 
-          onChange={e => {
-            setValue(e.target.value)
-          }}
+          onChange={handleInput}
           disabled={!ready}
           placeholder= "Enter an address"
         />
         <ComboboxPopover>
           <ComboboxList>
             {status === "OK" && data.map((singleData) => (
-              <ComboboxOption 
-                key={singleData.id} 
-                value={singleData.description} 
-              />
+                <ComboboxOption 
+                  key={singleData.id} 
+                  value={singleData.description} 
+                />
             ))}
           </ComboboxList>
         </ComboboxPopover>
