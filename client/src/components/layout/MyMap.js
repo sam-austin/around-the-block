@@ -7,6 +7,7 @@ import {
 
 import SearchPlacesBar from "./SearchPlacesBar"
 import MapMarkers from "./MapMarkers"
+import PersistedMarkers from "./PersistedMarkers"
 
 const libraries = ["places"]
 
@@ -32,11 +33,9 @@ const MyMap = props => {
 
   const [markers, setMarkers] = useState([])
 
-  const mapRef = useRef()
-
   const panTo = React.useCallback(({lat, lng}) => {
     mapRef.current.panTo({lat, lng})
-    mapRef.current.setZoom(16)
+    mapRef.current.setZoom(15)
   }, [])
 
   const onMapClick = useCallback(event => {
@@ -48,7 +47,8 @@ const MyMap = props => {
       }
     ])
   }, [])
-  
+
+  const mapRef = useRef()
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
   }, [])
@@ -72,10 +72,7 @@ const MyMap = props => {
         onLoad={onMapLoad}
         onClick={onMapClick}
       >
-        <MapMarkers
-          panTo={panTo}
-          markers={markers}
-        /> 
+        <MapMarkers panTo={panTo} markers={markers} />
       </GoogleMap>
     </div>
   )
