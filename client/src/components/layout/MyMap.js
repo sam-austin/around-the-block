@@ -7,7 +7,6 @@ import {
 
 import SearchPlacesBar from "./SearchPlacesBar"
 import MapMarkers from "./MapMarkers"
-import PersistedMarkers from "./PersistedMarkers"
 
 const libraries = ["places"]
 
@@ -31,7 +30,7 @@ const MyMap = props => {
     libraries,
   })
 
-  const [markers, setMarkers] = useState([])
+  const [marker, setMarker] = useState(null)
 
   const panTo = React.useCallback(({lat, lng}) => {
     mapRef.current.panTo({lat, lng})
@@ -39,15 +38,12 @@ const MyMap = props => {
   }, [])
 
   const onMapClick = useCallback(event => {
-    setMarkers(current => [
-      ...current, 
-      {
-        lat: event.latLng.lat(),
-        lng: event.latLng.lng(),
-      }
-    ])
+    setMarker({
+      lat: event.latLng.lat(),
+      lng: event.latLng.lng(),
+    })
   }, [])
-
+  
   const mapRef = useRef()
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
@@ -72,7 +68,7 @@ const MyMap = props => {
         onLoad={onMapLoad}
         onClick={onMapClick}
       >
-        <MapMarkers panTo={panTo} markers={markers} />
+        <MapMarkers panTo={panTo} marker={marker} />
       </GoogleMap>
     </div>
   )
