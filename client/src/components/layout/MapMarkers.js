@@ -5,7 +5,7 @@ import InfoWindowForm from "./InfoWindowForm"
 import PersistedMarkers from "./PersistedMarkers"
 import translateServerErrors from "../../services/translateServerErrors"
 
-const MapMarkers = ({ markers, panTo }) => {
+const MapMarkers = ({ marker, panTo }) => {
   
   const [selected, setSelected] = useState(null)
   const [fetchedMarkers, setFetchedMarkers] = useState([])
@@ -64,18 +64,17 @@ const MapMarkers = ({ markers, panTo }) => {
 
   return(
     <>
-    {markers.map((marker) => (
+    {marker !== null ? (
       <Marker 
-        key={`${marker.lat} - ${marker.lng}`}
-        position={{ lat: marker.lat, lng: marker.lng }}
-        onClick = {() => {
-          setSelected(marker)
-          setErrors({})
-        }}
-        panTo={panTo}
-      />
-    ))}
-
+      key={`${marker.lat} - ${marker.lng}`}
+      position={{ lat: marker.lat, lng: marker.lng }}
+      onClick = {() => {
+        setSelected(marker)
+        setErrors({})
+      }}
+      panTo={panTo}
+    />) : null}  
+    
     <PersistedMarkers 
       panTo={panTo} 
       fetchedMarkers={fetchedMarkers} 
