@@ -5,15 +5,15 @@ import InfoWindowForm from "./InfoWindowForm"
 import PersistedMarkers from "./PersistedMarkers"
 import translateServerErrors from "../../services/translateServerErrors"
 
-const MapMarkers = ({ marker, panTo }) => {
+const UserMarkers = ({ marker, panTo }) => {
   
   const [selected, setSelected] = useState(null)
   const [fetchedMarkers, setFetchedMarkers] = useState([])
   const [errors, setErrors] = useState({})
 
-  const getMarkers = async () => {
+  const getUserMarkers = async () => {
     try {
-      const response = await fetch("/api/v1/markers")
+      const response = await fetch("/api/v1/user-markers")
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error(errorMessage)
@@ -27,7 +27,7 @@ const MapMarkers = ({ marker, panTo }) => {
   }
 
   useEffect(() => {
-    getMarkers()
+    getUserMarkers()
   }, [])
 
   const addNewMarker = async (formRecord) => {
@@ -38,7 +38,7 @@ const MapMarkers = ({ marker, panTo }) => {
       formData.append("caption", formRecord.caption)
 
     try {
-      const response = await fetch("/api/v1/markers", {
+      const response = await fetch("/api/v1/user-markers", {
         method: "POST",
         headers: new Headers({
           "Accept": "image/jpeg"
@@ -107,4 +107,4 @@ const MapMarkers = ({ marker, panTo }) => {
   )
 }
 
-export default MapMarkers
+export default UserMarkers
