@@ -106,19 +106,20 @@ const InfoWindowForm =({ selected, addNewMarker, errors }) => {
           />
         </label>
       </div>
-
+      
       <Dropzone onDrop={handleFileUpload}>
-      {({getRootProps, getInputProps}) => (
-        <section className="container">
-          <div {...getRootProps({className: "dropzone"})}>
-            <input {...getInputProps()} />
-            <p>Drag 'n' drop or click to select a file!</p>
-          </div>
-          <aside style={thumbsContainer}>
-            {photoPreview}
-          </aside>
-        </section>
-      )}
+        {({getRootProps, getInputProps}) => (
+          <section className="container">
+            {!markerData.photo.path ? (
+            <div {...getRootProps({className: "dropzone"})}>
+              <input {...getInputProps()} />
+              <p>Drag 'n' drop or click to select a file!</p>
+            </div>) : null}
+            <aside style={thumbsContainer}>
+              {photoPreview}
+            </aside>
+          </section>
+        )}
       </Dropzone>
       
       {uploadMessage}

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from "react"
+import React, { useCallback, useRef } from "react"
 
 import {
   GoogleMap,
@@ -6,7 +6,7 @@ import {
 } from "@react-google-maps/api";
 
 import SearchPlacesBar from "./SearchPlacesBar"
-import UserMarkers from "./UserMarkers"
+import IndexMarkers from "./IndexMarkers"
 
 const libraries = ["places"]
 
@@ -24,24 +24,15 @@ const options = {
   zoomControl:true,
 }
 
-const MyMap = props => {
+const IndexMap = props => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyBreZf4DTUyZTEkQEig023fllmvbcnSOKs",
     libraries,
   })
 
-  const [marker, setMarker] = useState(null)
-
   const panTo = React.useCallback(({lat, lng}) => {
     mapRef.current.panTo({lat, lng})
     mapRef.current.setZoom(15)
-  }, [])
-
-  const onMapClick = useCallback(event => {
-    setMarker({
-      lat: event.latLng.lat(),
-      lng: event.latLng.lng(),
-    })
   }, [])
   
   const mapRef = useRef()
@@ -62,16 +53,15 @@ const MyMap = props => {
 
       <GoogleMap 
         mapContainerStyle={mapContainerStyle} 
-        zoom={14}
+        zoom={13}
         center={center}
         options={options}
         onLoad={onMapLoad}
-        onClick={onMapClick}
       >
-        <UserMarkers panTo={panTo} marker={marker} />
+        <IndexMarkers panTo={panTo} />
       </GoogleMap>
     </div>
   )
 }
 
-export default MyMap 
+export default IndexMap
