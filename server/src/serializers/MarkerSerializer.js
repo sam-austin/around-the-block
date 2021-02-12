@@ -5,7 +5,8 @@ class MarkerSerializer {
       "lat",
       "lng",
       "caption",
-      "userId"
+      "userId",
+      "photo"
     ]
 
     let serializedMarker = {}
