@@ -25,7 +25,10 @@ const PersistedMarkers = ({ fetchedMarkers, panTo }) => {
           setFetchedSelected(null);
         }}
       >
-        <p>{fetchedSelected.caption}</p>
+        <div>
+          <img className="fetched-photo" src={fetchedSelected.photo} />
+          <p>{fetchedSelected.caption}</p>
+        </div>
       </InfoWindow>
     ) : null}
     </>

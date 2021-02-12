@@ -23,7 +23,7 @@ class Marker extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["caption"],
+      required: ["caption", "photo"],
       properties: {
         caption: { type: "string" },
         userId: { type: ["integer", "string"] },

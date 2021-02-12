@@ -13,7 +13,7 @@ const MapMarkers = ({ marker, panTo }) => {
 
   const getMarkers = async () => {
     try {
-      const response = await fetch("api/v1/markers")
+      const response = await fetch("/api/v1/markers")
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error(errorMessage)
@@ -30,14 +30,20 @@ const MapMarkers = ({ marker, panTo }) => {
     getMarkers()
   }, [])
 
-  const addNewMarker = async (formData) => {
+  const addNewMarker = async (formRecord) => {
+    let formData = new FormData()
+      formData.append("lat", formRecord.lat)
+      formData.append("lng", formRecord.lng)
+      formData.append("photo", formRecord.photo)
+      formData.append("caption", formRecord.caption)
+
     try {
       const response = await fetch("/api/v1/markers", {
         method: "POST",
         headers: new Headers({
-          "Content-Type": "application/json"
+          "Accept": "image/jpeg"
         }),
-        body: JSON.stringify(formData)
+        body: formData
       })
       if (!response.ok) {
         if (response.status == 422) {
