@@ -8,7 +8,6 @@ import RegistrationForm from "./registration/RegistrationForm";
 import AuthenticatedRoute from "./authentication/AuthenticatedRoute"
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
-import MyMap from "./layout/MyMap";
 import IndexMap from "./layout/IndexMap"
 
 
@@ -34,8 +33,7 @@ const App = (props) => {
         </Route>
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
-        <AuthenticatedRoute exact path="/mymap" component={MyMap} user={currentUser} />
-        <AuthenticatedRoute exact path="/discover" component={IndexMap} user={currentUser} />
+        <AuthenticatedRoute exact path="/map" component={IndexMap} user={currentUser} />
       </Switch>
     </Router>
   );

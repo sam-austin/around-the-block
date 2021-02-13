@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from "react"
+import React, { useState, useCallback, useRef } from "react"
 
 import {
   GoogleMap,
@@ -30,9 +30,18 @@ const IndexMap = props => {
     libraries,
   })
 
+  const [marker, setMarker] = useState(null)
+
   const panTo = React.useCallback(({lat, lng}) => {
     mapRef.current.panTo({lat, lng})
     mapRef.current.setZoom(15)
+  }, [])
+
+  const onMapClick = useCallback(event => {
+    setMarker({
+      lat: event.latLng.lat(),
+      lng: event.latLng.lng(),
+    })
   }, [])
   
   const mapRef = useRef()
@@ -44,7 +53,7 @@ const IndexMap = props => {
     return "Error loading maps"
   }
   if (!isLoaded) {
-    return "Loading Maps"
+    return "Loading"
   }  
 
   return(
@@ -53,15 +62,16 @@ const IndexMap = props => {
 
       <GoogleMap 
         mapContainerStyle={mapContainerStyle} 
-        zoom={13}
+        zoom={14}
         center={center}
         options={options}
         onLoad={onMapLoad}
+        onClick={onMapClick}
       >
-        <IndexMarkers panTo={panTo} />
+        <IndexMarkers setMarker={setMarker} panTo={panTo} marker={marker} />
       </GoogleMap>
     </div>
   )
 }
 
-export default IndexMap
+export default IndexMap 

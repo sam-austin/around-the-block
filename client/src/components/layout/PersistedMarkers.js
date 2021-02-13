@@ -1,9 +1,20 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Marker, InfoWindow } from "@react-google-maps/api"
+import getCurrentUser from "../../services/getCurrentUser"
 
-const PersistedMarkers = ({ fetchedMarkers, panTo }) => {
-  
+const PersistedMarkers = ({ fetchedMarkers, panTo, markerIcon }) => {
   const [fetchedSelected, setFetchedSelected] = useState(null)
+
+  const [currentUser, setCurrentUser] = useState(undefined);
+  useEffect(() => {
+    getCurrentUser()
+      .then((user) => {
+        setCurrentUser(user);
+      })
+      .catch(() => {
+        setCurrentUser(null);
+      });
+  }, []);
 
   return(
     <>
@@ -11,6 +22,10 @@ const PersistedMarkers = ({ fetchedMarkers, panTo }) => {
       <Marker 
         key={`${marker.lat} - ${marker.lng}`}
         position={{ lat: marker.lat, lng: marker.lng }}
+        icon={marker.userId == currentUser.id ? (
+          markerIcon("blue")
+        ) : markerIcon("red")}
+
         onClick = {() => {
           setFetchedSelected(marker)
         }}

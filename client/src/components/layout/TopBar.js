@@ -19,10 +19,7 @@ const TopBar = ({ user }) => {
       <SignOutButton />
     </li>,
     <li>
-      <Link to="/mymap">My Map</Link>
-    </li>,
-    <li>
-    <Link to="/discover">Discover</Link>
+      <Link to="/map">Map</Link>
     </li>,
   ];
 
@@ -37,7 +34,6 @@ const TopBar = ({ user }) => {
             <Link to="/">Home</Link>
           </li>
           <ul className="menu">{user ? authenticatedListItems[1] : emptyLiTag}</ul>
-          <ul className="menu">{user ? authenticatedListItems[2] : emptyLiTag}</ul>
         </ul>
       </div>
       <div className="top-bar-right">
