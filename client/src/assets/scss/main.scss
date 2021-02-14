@@ -119,3 +119,16 @@ body {
 .infowindow-photo {
   width: 300px;
 }
+
+.locate {
+  position: absolute;
+  top: 0.5rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  z-index: 10;
+}
+.locate img {
+  width: 2.7rem;
+  cursor: pointer;
+}
