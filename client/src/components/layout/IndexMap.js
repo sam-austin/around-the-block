@@ -7,6 +7,7 @@ import {
 
 import SearchPlacesBar from "./SearchPlacesBar"
 import IndexMarkers from "./IndexMarkers"
+import LocateUser from "./LocateUser"
 
 const libraries = ["places"]
 
@@ -68,7 +69,10 @@ const IndexMap = props => {
         onLoad={onMapLoad}
         onClick={onMapClick}
       >
-        <IndexMarkers setMarker={setMarker} panTo={panTo} marker={marker} />
+        <IndexMarkers panTo={panTo} marker={marker} />
+
+        <LocateUser panTo={panTo} />
+
       </GoogleMap>
     </div>
   )

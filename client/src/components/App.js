@@ -10,7 +10,6 @@ import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 import IndexMap from "./layout/IndexMap"
 
-
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
   useEffect(() => {
