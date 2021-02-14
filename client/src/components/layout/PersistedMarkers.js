@@ -4,8 +4,8 @@ import getCurrentUser from "../../services/getCurrentUser"
 
 const PersistedMarkers = ({ fetchedMarkers, panTo, markerIcon }) => {
   const [fetchedSelected, setFetchedSelected] = useState(null)
-
-  const [currentUser, setCurrentUser] = useState(undefined);
+  const [currentUser, setCurrentUser] = useState({});
+  
   useEffect(() => {
     getCurrentUser()
       .then((user) => {
