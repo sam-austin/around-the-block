@@ -1,6 +1,7 @@
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
+@import 'antd/dist/antd.css';
 // place global css here
 
 body {
@@ -41,7 +42,7 @@ body {
 
 .search {
   position: absolute;
-  top: 3.5rem;
+  top: 4rem;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
@@ -122,8 +123,8 @@ body {
 
 .locate {
   position: absolute;
-  top: 0.5rem;
-  right: 1.2rem;
+  top: 4.5rem;
+  right: 0.7rem;
   background: none;
   border: none;
   z-index: 10;
@@ -131,4 +132,27 @@ body {
 .locate img {
   width: 2.7rem;
   cursor: pointer;
+}
+
+.logo {
+  width: 130px;
+  height: 31px;
+  background: #333;
+  border-radius: 6px;
+  margin: 16px 24px 16px 0;
+  float: left;
+  display: flex;
+  font-family: "Zapf Chancery", cursive;
+  text-align: center;
+  align-items: center;
+  font-size: large;
+  color:whitesmoke
+}
+
+.attr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35vh;
+  font-size: 10px;
 }
