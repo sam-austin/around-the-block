@@ -15,7 +15,7 @@ const LocateUser = ({ panTo }) => {
       );
     }}>
       <img 
-      src="https://www.flaticon.com/svg/vstatic/svg/3481/3481333.svg?token=exp=1613266915~hmac=2ce469e06fe2c31c528638101f3b02f8" 
+      src="https://around-the-block.s3.amazonaws.com/magnifying-glass.png" 
       alt="locate me" 
       />
     </button>
