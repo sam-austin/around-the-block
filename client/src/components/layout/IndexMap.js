@@ -1,4 +1,7 @@
 import React, { useState, useCallback, useRef } from "react"
+import { Layout } from 'antd';
+
+const { Header, Content } = Layout;
 
 import {
   GoogleMap,
@@ -12,8 +15,8 @@ import LocateUser from "./LocateUser"
 const libraries = ["places"]
 
 const mapContainerStyle = {
-  width: "100vw",
-  height: "100vh"
+  width: "96.8vw",
+  height: "86.8vh"
 }
 const center = {
   lat: 42.3736,
@@ -33,7 +36,7 @@ const IndexMap = props => {
 
   const [marker, setMarker] = useState(null)
 
-  const panTo = React.useCallback(({lat, lng}) => {
+  const panTo = useCallback(({lat, lng}) => {
     mapRef.current.panTo({lat, lng})
     mapRef.current.setZoom(15)
   }, [])
@@ -58,23 +61,27 @@ const IndexMap = props => {
   }  
 
   return(
-    <div>
-      <SearchPlacesBar panTo={panTo} />
+    <Layout className="site-layout-background">
+      <Header></Header>
+      <Content style={{ padding: '24px 24px 24px 24px'}} 
+      className="site-layout-background">
+        <SearchPlacesBar panTo={panTo} />
 
-      <GoogleMap 
-        mapContainerStyle={mapContainerStyle} 
-        zoom={14}
-        center={center}
-        options={options}
-        onLoad={onMapLoad}
-        onClick={onMapClick}
-      >
-        <IndexMarkers panTo={panTo} marker={marker} />
+        <GoogleMap 
+          mapContainerStyle={mapContainerStyle} 
+          zoom={14}
+          center={center}
+          options={options}
+          onLoad={onMapLoad}
+          onClick={onMapClick}
+        >
+          <IndexMarkers panTo={panTo} marker={marker} />
 
-        <LocateUser panTo={panTo} />
+          <LocateUser panTo={panTo} />
 
-      </GoogleMap>
-    </div>
+        </GoogleMap>
+      </Content>
+    </Layout>
   )
 }
 
