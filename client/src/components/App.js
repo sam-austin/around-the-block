@@ -9,6 +9,7 @@ import AuthenticatedRoute from "./authentication/AuthenticatedRoute"
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 import IndexMap from "./layout/IndexMap"
+import ProfilePage from "./layout/ProfilePage"
 import AttributionText from "./layout/AttributionText"
 
 const App = (props) => {
@@ -36,6 +37,7 @@ const App = (props) => {
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <AuthenticatedRoute exact path="/map" component={IndexMap} user={currentUser} />
+        <AuthenticatedRoute exact path="/myphotos" component={ProfilePage} user={currentUser} />
       </Switch>
     </Router>
   );

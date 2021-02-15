@@ -19,23 +19,24 @@ const TopBar = ({ user }) => {
     <Menu.Item key="sign-out" style={{float: "right"}}>
       <SignOutButton />
     </Menu.Item>,
+    <Menu.Item key="4" style={{float: "right"}}>
+      <Link to="/myphotos">My Photos</Link>
+    </Menu.Item>,
     <Menu.Item key="3" style={{float: "right"}}>
       <Link to="/map">Map</Link>
     </Menu.Item>,
   ];
 
   return (
-    <Layout>
-      <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-        <div className="logo">Around the Block</div>
-        <Menu theme="dark" mode="horizontal">
-          {user ? authenticatedListItems : unauthenticatedListItems}
-          <Menu.Item key="2" style={{float: "right"}}>
-            <Link to="/">Home</Link>
-          </Menu.Item>  
-        </Menu>
-      </Header>
-    </Layout>
+    <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+      <div className="logo">Around the Block</div>
+      <Menu theme="dark" mode="horizontal">
+        {user ? authenticatedListItems : unauthenticatedListItems}
+        <Menu.Item key="2" style={{float: "right"}}>
+          <Link to="/">Home</Link>
+        </Menu.Item>  
+      </Menu>
+    </Header>
   );
 };
 

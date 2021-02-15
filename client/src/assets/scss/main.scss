@@ -118,7 +118,11 @@ body {
 }
 
 .infowindow-photo {
-  width: 300px;
+  width: 250px;
+}
+
+.photo-display {
+  width: 250px;
 }
 
 .locate {
@@ -155,4 +159,8 @@ body {
   align-items: center;
   height: 35vh;
   font-size: 10px;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
 }
