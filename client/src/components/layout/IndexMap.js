@@ -75,7 +75,7 @@ const IndexMap = props => {
           onLoad={onMapLoad}
           onClick={onMapClick}
         >
-          <IndexMarkers panTo={panTo} marker={marker} />
+          <IndexMarkers panTo={panTo} marker={marker} setMarker={setMarker}/>
 
           <LocateUser panTo={panTo} />
 

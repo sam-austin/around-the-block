@@ -35,6 +35,7 @@ const IndexMarkers = ({ setMarker, marker, panTo }) => {
       formData.append("lat", formRecord.lat)
       formData.append("lng", formRecord.lng)
       formData.append("photo", formRecord.photo)
+      formData.append("title", formRecord.title)
       formData.append("caption", formRecord.caption)
 
     try {
@@ -58,11 +59,11 @@ const IndexMarkers = ({ setMarker, marker, panTo }) => {
         const bodyResponse = await response.json()
         setFetchedMarkers([
           ...fetchedMarkers,
-          bodyResponse.newMarker
+          bodyResponse.newSerializedMarker
         ])
+        alert("Submission successful!")
         setSelected(null)
         setMarker(null)
-        alert("Submission successful!")
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
@@ -109,8 +110,7 @@ const IndexMarkers = ({ setMarker, marker, panTo }) => {
           setSelected(null);
         }}
       >
-        <div>
-          <h5>Upload a Photo!</h5>
+        <div className="form">
           <InfoWindowForm 
           selected={selected}
           addNewMarker={addNewMarker}

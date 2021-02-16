@@ -50,7 +50,7 @@ const ProfilePage = props => {
   };
 
   return (
-    <div>
+    <div className="site-layout">
       <Header>
       </Header>
         <Sider

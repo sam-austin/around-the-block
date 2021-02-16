@@ -3,6 +3,9 @@
 @include foundation-everything;
 @import 'antd/dist/antd.css';
 // place global css here
+[data-theme="compact"] p, p {
+  margin: 0;
+}
 
 body {
   background: url(https://images.unsplash.com/photo-1533875616-f804380c6b6e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80);
@@ -118,11 +121,7 @@ body {
 }
 
 .infowindow-photo {
-  width: 250px;
-}
-
-.photo-display {
-  width: 250px;
+  max-height: 170px;
 }
 
 .locate {
@@ -163,4 +162,14 @@ body {
 
 .site-layout .site-layout-background {
   background: #fff;
+}
+
+.form {
+  max-height: 250px;
+  max-width: 250px;
+}
+
+.fetched-window {
+  max-height: 250px;
+  max-width: 250px;
 }
