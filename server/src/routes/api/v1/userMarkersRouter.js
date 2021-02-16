@@ -9,7 +9,7 @@ userMarkersRouter.get("/", async (req, res) => {
 
   try {
     const markers = await Marker.query().where({userId: currentUserId})
-    const serializedMarkers = markers.map((marker) => MarkerSerializer.getSummary(marker))
+    const serializedMarkers = await Promise.all(markers.map((marker) => MarkerSerializer.getSummary(marker)))
     return res.status(200).json({ markers: serializedMarkers })
   } catch (error) {
     return res.status(500).json({ errors: error })

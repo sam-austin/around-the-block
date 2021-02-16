@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react"
 import { Marker, InfoWindow } from "@react-google-maps/api"
 import getCurrentUser from "../../services/getCurrentUser"
 
+import { Typography } from 'antd';
+const { Title } = Typography;
+
 const PersistedMarkers = ({ fetchedMarkers, panTo, markerIcon }) => {
   const [fetchedSelected, setFetchedSelected] = useState(null)
   const [currentUser, setCurrentUser] = useState({});
@@ -40,9 +43,12 @@ const PersistedMarkers = ({ fetchedMarkers, panTo, markerIcon }) => {
           setFetchedSelected(null);
         }}
       >
-        <div>
+        <div className="fetched-window">       
           <img className="infowindow-photo" src={fetchedSelected.photo} />
+          <Title level={5}>{fetchedSelected.title}</Title> 
+          <p>by {fetchedSelected.user.userName}</p>
           <p>{fetchedSelected.caption}</p>
+          
         </div>
       </InfoWindow>
     ) : null}

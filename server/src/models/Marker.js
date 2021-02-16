@@ -9,7 +9,7 @@ class Marker extends Model {
     const { User } = require("./index.js")
 
     return {
-      users: {
+      user: {
         relation: Model.BelongsToOneRelation,
         modelClass: User,
         join: {
@@ -23,10 +23,11 @@ class Marker extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["caption", "photo"],
+      required: ["caption", "photo", "title"],
       properties: {
         caption: { type: "string" },
         userId: { type: ["integer", "string"] },
+        title: { type: "string" },
       },
     }
   }

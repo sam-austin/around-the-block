@@ -7,6 +7,7 @@ const InfoWindowForm =({ selected, addNewMarker, errors }) => {
     lat: selected.lat,  
     lng: selected.lng,
     caption: "",
+    title:"",
     photo: {}
   })
 
@@ -96,7 +97,17 @@ const InfoWindowForm =({ selected, addNewMarker, errors }) => {
       <ErrorList errors={errors} />
       <div className="grid-x grid-margin-x">
         <label className="cell small-12 text-left">
-          Add a Caption:
+          Title:
+          <input 
+            name="title"
+            id="title"
+            type="text"
+            value={markerData.title}
+            onChange={onChangeHandler}
+          />
+          </label>
+        <label className="cell small-12 text-left">
+          Caption:
           <input 
             name="caption"
             id="caption"
