@@ -136,7 +136,7 @@ const InfoWindowForm =({ selected, addNewMarker, errors }) => {
       {uploadMessage}
   
       <div className="cell small-12 text-center">
-        <input className="button" type="submit" value="Submit" />
+        <input className="salmon button rounded-button" type="submit" value="Submit" />
       </div>
     </form>
   )

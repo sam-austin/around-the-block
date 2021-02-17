@@ -49,9 +49,11 @@ const PersonalMap = ({ userMarkers, markerIcon }) => {
     return "Loading"
   }
 
+  const searchDisplay = "search-personal"
+  const locateDisplay = "locate-personal"
+
   return(
     <Layout className="site-layout-background">
-      <SearchPlacesBar panTo={panTo} />
 
       <GoogleMap 
         mapContainerStyle={mapContainerStyle} 
@@ -60,6 +62,7 @@ const PersonalMap = ({ userMarkers, markerIcon }) => {
         options={options}
         onLoad={onMapLoad}
       >
+        <SearchPlacesBar panTo={panTo} searchDisplay={searchDisplay} />
 
         <PersistedMarkers
           fetchedMarkers={userMarkers}
@@ -67,7 +70,7 @@ const PersonalMap = ({ userMarkers, markerIcon }) => {
           panTo={panTo}
         />    
 
-        <LocateUser panTo={panTo} />
+        <LocateUser panTo={panTo} locateDisplay={locateDisplay} />
 
       </GoogleMap>
     </Layout>

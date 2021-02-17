@@ -10,7 +10,7 @@ import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 import IndexMap from "./layout/IndexMap"
 import ProfilePage from "./layout/ProfilePage"
-import AttributionText from "./layout/AttributionText"
+import LandingPage from "./layout/LandingPage"
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -28,12 +28,7 @@ const App = (props) => {
     <Router>
       <TopBar user={currentUser} />
       <Switch>
-        <Route exact path="/">
-          <div>
-            <h1 id="site-title">Capture. Share. Discover.</h1>
-            <AttributionText />
-          </div>
-        </Route>
+        <Route exact path="/" component={LandingPage} />
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <AuthenticatedRoute exact path="/map" component={IndexMap} user={currentUser} />
