@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Marker, InfoWindow } from "@react-google-maps/api"
+import { notification} from 'antd'
 
 import InfoWindowForm from "./InfoWindowForm"
 import PersistedMarkers from "./PersistedMarkers"
@@ -29,6 +30,15 @@ const IndexMarkers = ({ setMarker, marker, panTo }) => {
   useEffect(() => {
     getMarkers()
   }, [])
+
+  const openNotificationWithIcon = type => {
+    notification[type]({
+      message: 'Success',
+      description:
+        'Your upload was successful!',
+      duration: 1.2,
+    });
+  };
 
   const addNewMarker = async (formRecord) => {
     let formData = new FormData()
@@ -61,7 +71,7 @@ const IndexMarkers = ({ setMarker, marker, panTo }) => {
           ...fetchedMarkers,
           bodyResponse.newSerializedMarker
         ])
-        alert("Submission successful!")
+        openNotificationWithIcon("success")
         setSelected(null)
         setMarker(null)
       }

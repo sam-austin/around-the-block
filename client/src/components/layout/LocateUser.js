@@ -1,9 +1,9 @@
 import React from "react";
 
-const LocateUser = ({ panTo }) => {
+const LocateUser = ({ panTo, locateDisplay }) => {
 
   return (
-    <button className="locate" onClick={() => {
+    <button className={locateDisplay} onClick={() => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           panTo({
@@ -15,8 +15,8 @@ const LocateUser = ({ panTo }) => {
       );
     }}>
       <img 
-      src="https://around-the-block.s3.amazonaws.com/magnifying-glass.png" 
-      alt="locate me" 
+        src="https://around-the-block.s3.amazonaws.com/magnifying-glass.png" 
+        alt="locate me" 
       />
     </button>
   )

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import {
+  LogoutOutlined,
+} from '@ant-design/icons';
 
 const SignOutButton = () => {
   const [shouldRedirect, setShouldRedirect] = useState(false);
@@ -30,7 +32,7 @@ const SignOutButton = () => {
 
   return (
     <div onClick={signOut}>
-      Sign Out
+      <LogoutOutlined />Sign Out
     </div>
   );
 };

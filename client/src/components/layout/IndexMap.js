@@ -60,12 +60,14 @@ const IndexMap = props => {
     return "Loading"
   }  
 
+  const searchDisplay = "search-index"
+  const locateDisplay = "locate-index"
+
   return(
     <Layout className="site-layout-background">
       <Header></Header>
       <Content style={{ padding: '24px 24px 24px 24px'}} 
       className="site-layout-background">
-        <SearchPlacesBar panTo={panTo} />
 
         <GoogleMap 
           mapContainerStyle={mapContainerStyle} 
@@ -75,9 +77,11 @@ const IndexMap = props => {
           onLoad={onMapLoad}
           onClick={onMapClick}
         >
-          <IndexMarkers panTo={panTo} marker={marker} setMarker={setMarker}/>
+          <SearchPlacesBar panTo={panTo} searchDisplay={searchDisplay} />
 
-          <LocateUser panTo={panTo} />
+          <IndexMarkers panTo={panTo} marker={marker} setMarker={setMarker} />
+
+          <LocateUser panTo={panTo} locateDisplay={locateDisplay}/>
 
         </GoogleMap>
       </Content>

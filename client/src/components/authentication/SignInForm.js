@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import config from "../../config";
 import FormError from "../layout/FormError";
+import { Layout } from 'antd';
+const { Header } = Layout;
 
 const SignInForm = () => {
   const [userPayload, setUserPayload] = useState({ email: "", password: "" });
@@ -64,33 +66,37 @@ const SignInForm = () => {
   }
 
   return (
-    <div className="grid-container" onSubmit={onSubmit}>
-      <h1 className="reg-form">Sign In</h1>
-      <form className="reg-form">
-        <div>
-          <label>
-            Email
-            <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
-            <FormError error={errors.email} />
-          </label>
-        </div>
-        <div>
-          <label>
-            Password
-            <input
-              type="password"
-              name="password"
-              value={userPayload.password}
-              onChange={onInputChange}
-            />
-            <FormError error={errors.password} />
-          </label>
-        </div>
-        <div>
-          <input type="submit" className="button" value="Sign In" />
-        </div>
-      </form>
-    </div>
+    <Layout>
+      <Header></Header>
+      <div className="grid-container reg-form-background" onSubmit={onSubmit}>
+        <form className="grid-x grid-padding-x reg-form-position">
+          <div className="medium-3 cell">
+            <label className="reg-form-text">
+              Email
+              <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
+              <FormError error={errors.email} />
+            </label>
+          </div>
+          <div className="medium-12 cell"></div>
+          <div className="medium-3 cell">
+            <label className="reg-form-text">
+              Password
+              <input
+                type="password"
+                name="password"
+                value={userPayload.password}
+                onChange={onInputChange}
+              />
+              <FormError error={errors.password} />
+            </label>
+          </div>
+          <div className="medium-12 cell"></div>
+          <div>
+            <input type="submit" className="rounded-button button salmon" value="Sign In" />
+          </div>
+        </form>
+      </div>
+    </Layout>
   );
 };
 

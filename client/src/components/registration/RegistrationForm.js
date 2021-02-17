@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import FormError from "../layout/FormError";
 import config from "../../config";
 
+import { Layout} from 'antd';
+const { Header } = Layout;
+
 const RegistrationForm = () => {
   const [userPayload, setUserPayload] = useState({
     email: "",
@@ -93,57 +96,63 @@ const RegistrationForm = () => {
   }
 
   return (
-    <div className="grid-container" onSubmit={onSubmit}>
-      <h1 className= "reg-form">Register</h1>
-      <form className="reg-form">
-        <div>
-          <label>
-            <span className="reg-label">Email</span>
-            <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
-            <FormError error={errors.email} />
-          </label>
-        </div>
-        <div>
-          <label>
-            <span className="reg-label">User Name</span>
-            <input
-              type="text"
-              name="userName"
-              value={userPayload.userName}
-              onChange={onInputChange}
-            />
-            <FormError error={errors.userName} />
-          </label>
-        </div>
-        <div>
-          <label>
-            <span className="reg-label">Password</span>
-            <input
-              type="password"
-              name="password"
-              value={userPayload.password}
-              onChange={onInputChange}
-            />
-            <FormError error={errors.password} />
-          </label>
-        </div>
-        <div>
-          <label>
-            <span className="reg-label">Password Confirmation</span>
-            <input
-              type="password"
-              name="passwordConfirmation"
-              value={userPayload.passwordConfirmation}
-              onChange={onInputChange}
-            />
-            <FormError error={errors.passwordConfirmation} />
-          </label>
-        </div>
-        <div>
-          <input type="submit" className="button" value="Register" />
-        </div>
-      </form>
-    </div>
+    <Layout>
+      <Header></Header>
+      <div className="grid-container reg-form-background" onSubmit={onSubmit}>
+        <form className="grid-x grid-padding-x reg-form-position">
+          <div className="medium-3 cell">
+            <label className="reg-form-text">
+              Email
+              <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
+              <FormError error={errors.email} />
+            </label>
+          </div>
+          <div className="medium-12 cell"></div>
+          <div className="medium-3 cell">
+            <label className="reg-form-text">
+              User Name
+              <input
+                type="text"
+                name="userName"
+                value={userPayload.userName}
+                onChange={onInputChange}
+              />
+              <FormError error={errors.userName} />
+            </label>
+          </div>
+          <div className="medium-12 cell"></div>
+          <div className="medium-3 cell">
+            <label className="reg-form-text">
+              Password
+              <input
+                type="password"
+                name="password"
+                value={userPayload.password}
+                onChange={onInputChange}
+              />
+              <FormError error={errors.password} />
+            </label>
+          </div>
+          <div className="medium-12 cell"></div>
+          <div className="medium-3 cell">
+            <label className="reg-form-text">
+              Password Confirmation
+              <input
+                type="password"
+                name="passwordConfirmation"
+                value={userPayload.passwordConfirmation}
+                onChange={onInputChange}
+              />
+              <FormError error={errors.passwordConfirmation} />
+            </label>
+          </div>
+          <div className="medium-12 cell"></div>
+          <div>
+            <input type="submit" className="rounded-button button salmon" value="Register" />
+          </div>
+        </form>
+      </div>
+    </Layout>
   );
 };
 

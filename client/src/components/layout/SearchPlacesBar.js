@@ -13,7 +13,7 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 
-const SearchPlacesBar = ({ panTo }) => {
+const SearchPlacesBar = ({ panTo, searchDisplay }) => {
   const {
     ready, value, suggestions: {status, data}, setValue, clearSuggestions
   } = usePlacesAutocomplete({
@@ -41,7 +41,7 @@ const SearchPlacesBar = ({ panTo }) => {
   }
 
   return (
-    <div className="search">
+    <div className={searchDisplay}>
       <Combobox onSelect={handleSelect}>
         <ComboboxInput 
           value={value} 
