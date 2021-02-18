@@ -69,7 +69,7 @@ const SignInForm = () => {
     <Layout>
       <Header></Header>
       <div className="grid-container reg-form-background" onSubmit={onSubmit}>
-        <form className="grid-x grid-padding-x reg-form-position">
+        <form className="grid-x grid-padding-x reg-form-position" autoComplete="off">
           <div className="medium-3 cell">
             <label className="reg-form-text">
               Email
