@@ -93,7 +93,7 @@ const InfoWindowForm =({ selected, addNewMarker, errors }) => {
   }, [uploadedPhoto]);
 
   return(
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} autoComplete="off">
       <ErrorList errors={errors} />
       <div className="grid-x grid-margin-x">
         <label className="cell small-12 text-left">
