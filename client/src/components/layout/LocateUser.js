@@ -1,9 +1,9 @@
 import React from "react";
 
-const LocateUser = ({ panTo, locateDisplay }) => {
+const LocateUser = ({ panTo }) => {
 
   return (
-    <button className={locateDisplay} onClick={() => {
+    <button className="locate" onClick={() => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           panTo({

@@ -54,21 +54,19 @@ const ProfilePage = props => {
       <Header>
       </Header>
         <Sider
-          className='profile-sider'
-          style={{ padding: '0 0 24px 0' }}
-          className="site-layout-background"
-          width={250}
+          className="profile-sider grid-container site-layout-background"
+          width={390}
           style={{
             overflow: 'auto',
-            height: "86.8vh",
+            height: "91vh",
             position: 'fixed',
-            left: 24,
-            top:88,
+            left: 12,
+            top:64,
           }}
           >
             {markersDisplay} 
         </Sider>
-      <Layout style={{ padding: '24px 24px 24px 298px'}} className="site-layout-background">
+      <Layout style={{ padding: '0 0 0 392px'}} className="site-layout-background grid-container">
         <Content 
           className="site-layout-background"
           style={{ 
