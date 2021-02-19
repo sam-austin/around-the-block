@@ -13,8 +13,8 @@ import PersistedMarkers from "./PersistedMarkers"
 const libraries = ["places"]
 
 const mapContainerStyle = {
-  width: "79vw",
-  height: "86.8vh",
+  width: "100%",
+  height: "91vh",
 }
 const center = {
   lat: 42.3736,
@@ -49,30 +49,26 @@ const PersonalMap = ({ userMarkers, markerIcon }) => {
     return "Loading"
   }
 
-  const searchDisplay = "search-personal"
-  const locateDisplay = "locate-personal"
-
   return(
-    <Layout className="site-layout-background">
+    <Layout className="site-layout-background grid-container-photomap">
+        <GoogleMap 
+          mapContainerStyle={mapContainerStyle} 
+          zoom={14}
+          center={center}
+          options={options}
+          onLoad={onMapLoad}
+        >
+          <SearchPlacesBar panTo={panTo} />
 
-      <GoogleMap 
-        mapContainerStyle={mapContainerStyle} 
-        zoom={14}
-        center={center}
-        options={options}
-        onLoad={onMapLoad}
-      >
-        <SearchPlacesBar panTo={panTo} searchDisplay={searchDisplay} />
+          <PersistedMarkers
+            fetchedMarkers={userMarkers}
+            markerIcon={markerIcon}
+            panTo={panTo}
+          />    
 
-        <PersistedMarkers
-          fetchedMarkers={userMarkers}
-          markerIcon={markerIcon}
-          panTo={panTo}
-        />    
+          <LocateUser panTo={panTo} />
 
-        <LocateUser panTo={panTo} locateDisplay={locateDisplay} />
-
-      </GoogleMap>
+        </GoogleMap>
     </Layout>
   )
 }

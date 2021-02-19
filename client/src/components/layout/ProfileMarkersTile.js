@@ -7,7 +7,7 @@ const ProfileMarkersTile = props => {
   return(
     <Card
       hoverable
-      style={{ width: 240}}
+      style={{ width: 350}}
       cover={<img alt="user photo" src={props.userMarker.photo} />}
       title={props.userMarker.title}
     >

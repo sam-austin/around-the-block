@@ -11,12 +11,15 @@ import {
 import SearchPlacesBar from "./SearchPlacesBar"
 import IndexMarkers from "./IndexMarkers"
 import LocateUser from "./LocateUser"
+import MapLegend from "./MapLegend"
 
 const libraries = ["places"]
 
 const mapContainerStyle = {
-  width: "96.8vw",
-  height: "86.8vh"
+  width: "100%",
+  height: "91vh",
+  overflow: "hidden",
+  position: "relative",
 }
 const center = {
   lat: 42.3736,
@@ -60,15 +63,16 @@ const IndexMap = props => {
     return "Loading"
   }  
 
-  const searchDisplay = "search-index"
-  const locateDisplay = "locate-index"
-
   return(
-    <Layout className="site-layout-background">
-      <Header></Header>
-      <Content style={{ padding: '24px 24px 24px 24px'}} 
-      className="site-layout-background">
-
+    <div className="grid-container site-layout">
+      <Header>
+      </Header>
+      <Content 
+        style={{ 
+        overflow: 'hidden',
+        display: "block",
+        margin: "auto",
+        }}>
         <GoogleMap 
           mapContainerStyle={mapContainerStyle} 
           zoom={14}
@@ -77,15 +81,17 @@ const IndexMap = props => {
           onLoad={onMapLoad}
           onClick={onMapClick}
         >
-          <SearchPlacesBar panTo={panTo} searchDisplay={searchDisplay} />
+          <SearchPlacesBar panTo={panTo} />
 
           <IndexMarkers panTo={panTo} marker={marker} setMarker={setMarker} />
 
-          <LocateUser panTo={panTo} locateDisplay={locateDisplay}/>
+          <LocateUser panTo={panTo} />
+
+          <MapLegend />
 
         </GoogleMap>
       </Content>
-    </Layout>
+    </div>
   )
 }
 

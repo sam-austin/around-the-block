@@ -43,8 +43,10 @@ const PersistedMarkers = ({ fetchedMarkers, panTo, markerIcon }) => {
           setFetchedSelected(null);
         }}
       >
-        <div className="fetched-window">       
-          <img className="infowindow-photo" src={fetchedSelected.photo} />
+        <div className="fetched-window">
+          <div className="infophoto-div">
+            <img className="infowindow-photo" src={fetchedSelected.photo} />
+          </div>       
           <Title level={5}>{fetchedSelected.title}</Title> 
           <p>by {fetchedSelected.user.userName}</p>
           <p>{fetchedSelected.caption}</p>
