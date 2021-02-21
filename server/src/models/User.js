@@ -24,7 +24,7 @@ class User extends uniqueFunc(Model) {
   }
 
   static get relationMappings() {
-    const { Marker } = require("./index.js")
+    const { Marker, Like } = require("./index.js")
 
     return {
       markers: {
@@ -33,6 +33,26 @@ class User extends uniqueFunc(Model) {
         join: {
           from: "users.id",
           to: "markers.userId"
+        }
+      },
+      likesMarkers: {
+        relation: Model.ManyToManyRelation,
+        modelClass: Marker,
+        join: {
+          from: "users.id",
+          through: {
+            from: "likes.userId",
+            to: "likes.markerId"
+          },
+          to: "markers.id"
+        }
+      },
+      likes: {
+        relation: Model.HasManyRelation,
+        modelClass: Like,
+        join: {
+          from: "users.id",
+          to: "likes.userId"
         }
       }
     }

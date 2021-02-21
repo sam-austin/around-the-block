@@ -127,8 +127,14 @@ body {
   font-family: sans-serif;
 }
 
+.fetched-window {
+  width: 280px;
+}
+
 .infowindow-photo {
-  max-height: 280px;
+  object-fit: cover;
+  width: 272px;
+  height: 272px;
 }
 
 .infophoto-div {
@@ -185,15 +191,6 @@ body {
   max-width: 300px;
 }
 
-.fetched-window {
-  width: 280px;
-}
-
-.fetched-window img {
-  display:flex;
-
-}
-
 .custom-icons-list > .anticon {
   margin-right: 6px;
 }
@@ -225,12 +222,8 @@ body {
 
 .map-legend-icon {
   height: 16px;
-  display: "flex";
-  justify-content: "center"
 }
 
 .map-legend-marker {
-  width: 12px;
-  display: "flex";
-  justify-content: "center"
+  width: 14.5px;
 }

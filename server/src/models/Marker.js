@@ -6,7 +6,7 @@ class Marker extends Model {
   }
   
   static get relationMappings() {
-    const { User } = require("./index.js")
+    const { User, Like } = require("./index.js")
 
     return {
       user: {
@@ -15,6 +15,26 @@ class Marker extends Model {
         join: {
           from: "markers.userId",
           to: "users.id"
+        }
+      },
+      users: {
+        relation: Model.ManyToManyRelation,
+        modelClass: User,
+        join: {
+          from: "markers.id",
+          through: {
+            from: "likes.markerId",
+            to: "likes.userId"
+          },
+          to: "users.id"
+        }
+      },
+      likes: {
+        relation: Model.HasManyRelation,
+        modelClass: Like,
+        join: {
+          from: "markers.id",
+          to: "likes.markerId"
         }
       }
     }
