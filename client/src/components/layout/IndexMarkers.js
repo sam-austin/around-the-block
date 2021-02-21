@@ -80,6 +80,70 @@ const IndexMarkers = ({ setMarker, marker, panTo }) => {
     }
   }
 
+  const addNewLike = async (liked) => {
+    try {
+      const response = await fetch(`/api/v1/markers/likes`, {
+        method: "POST",
+        headers: new Headers({
+          "Content-Type": "application/json"
+        }),
+        body: JSON.stringify(liked)
+      })
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        const error = new Error(errorMessage)
+        throw(error)
+      }
+      const responseBody = await response.json()
+      if (responseBody.serializedLike) {
+        let newLikedMarkers = fetchedMarkers.map(fetchedMarker => {
+          if (fetchedMarker.id == responseBody.serializedLike.markerId) {
+
+            fetchedMarker.likes.push(responseBody.serializedLike)
+          }
+          return fetchedMarker
+        })
+      setFetchedMarkers(newLikedMarkers)
+      }
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
+
+  const removeLike = async (markerInfo) => {
+    try {
+      const response = await fetch(`/api/v1/markers/likes`, 
+      {
+        method: "PATCH",
+        headers: new Headers({
+          "Content-Type": "application/json"
+        }),
+        body: JSON.stringify(markerInfo)
+      })
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        const error = new Error(errorMessage)
+        throw(error)
+      }
+      const responseBody = await response.json()
+      debugger
+      if (responseBody) {
+        let updatedLikedMarkers = fetchedMarkers.map(fetchedMarker => {
+          if (fetchedMarker.id == responseBody.markerId) {
+            fetchedMarker.likes = fetchedMarker.likes.filter(like => {
+              like.markerId !== responseBody.markerId
+            })
+          }
+          return fetchedMarker
+        })
+        setFetchedMarkers(updatedLikedMarkers)
+      }
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
+
+
   const markerIcon = color => {
     return ({
       path:
@@ -111,6 +175,8 @@ const IndexMarkers = ({ setMarker, marker, panTo }) => {
       panTo={panTo} 
       fetchedMarkers={fetchedMarkers}
       markerIcon={markerIcon}
+      addNewLike={addNewLike}
+      removeLike={removeLike}
     />
 
     {selected ? (

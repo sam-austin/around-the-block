@@ -1,5 +1,6 @@
 import express from "express"
 import { ValidationError } from "objection"
+
 import cleanUserInput from "../../../services/cleanUserInput.js"
 import Marker from "../../../models/Marker.js"
 import MarkerSerializer from "../../../serializers/MarkerSerializer.js"

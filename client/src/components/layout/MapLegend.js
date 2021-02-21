@@ -6,7 +6,7 @@ import {
 } from '@ant-design/icons';
 
 const MapLegend = props => {
-  const [collapsed, setCollapsed] = useState(true)
+  const [collapsed, setCollapsed] = useState(false)
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed)
@@ -39,25 +39,25 @@ const MapLegend = props => {
         <Menu.Item 
           key="2" 
           disabled
-          icon={<img src="https://around-the-block.s3.amazonaws.com/red-svg-marker-ed.png"
-          className="map-legend-marker"
-          />}
-        >
-          <span className="map-legend-text">
-            Your Markers
-          </span>
-        </Menu.Item>
-
-        <Menu.Item 
-          key="3" 
-          disabled
           icon={<img src="https://around-the-block.s3.amazonaws.com/blue-svg-marker-ed.png"
           className="map-legend-marker"
           />}
         >
           <span className="map-legend-text">
-            Other Markers
+            Your Markers
           </span>    
+        </Menu.Item>
+
+        <Menu.Item 
+          key="3" 
+          disabled
+          icon={<img src="https://around-the-block.s3.amazonaws.com/red-svg-marker-ed.png"
+          className="map-legend-marker"
+          />}
+        >
+          <span className="map-legend-text">
+            Other Markers
+          </span>
         </Menu.Item>
       </Menu>
     </div>
