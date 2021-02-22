@@ -161,7 +161,7 @@ const IndexMarkers = ({ setMarker, marker, panTo }) => {
       <Marker 
       key={`${marker.lat} - ${marker.lng}`}
       position={{ lat: marker.lat, lng: marker.lng }}
-      icon={markerIcon("blue")}
+      icon={markerIcon("blue", 0.6)}
       onClick = {() => {
         setSelected(marker)
         setErrors({})
