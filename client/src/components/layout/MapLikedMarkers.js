@@ -6,8 +6,8 @@ import LikeTile from "./LikeTile"
 import { Typography } from 'antd';
 const { Title } = Typography;
 
-const PersistedMarkers = ({ fetchedMarkers, panTo, markerIcon, addNewLike, removeLike }) => {
-  const [fetchedSelected, setFetchedSelected] = useState(null)
+const MapLikedMarkers = ({ likedMarkers, panTo, markerIcon }) => {
+  const [likedSelected, setLikedSelected] = useState(null)
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
@@ -19,45 +19,41 @@ const PersistedMarkers = ({ fetchedMarkers, panTo, markerIcon, addNewLike, remov
         setCurrentUser(null);
       });
   }, []);
-  
+
   return(
     <>
-    {fetchedMarkers.map((marker) => (
+    {likedMarkers.map((marker) => (
       <Marker 
         key={`${marker.lat} - ${marker.lng}`}
         position={{ lat: marker.lat, lng: marker.lng }}
-        icon={marker.userId == currentUser.id ? (
-          markerIcon("blue", 0.6)
-        ) : markerIcon("purple", 0.6)}
+        icon={markerIcon("red")}
         onClick = {() => {
-          setFetchedSelected(null)
-          setFetchedSelected(marker)
+          setLikedSelected(null)
+          setLikedSelected(marker)
         }}
         panTo={panTo}
       />
     ))}
     
-    {fetchedSelected ? (
+    {likedSelected ? (
       <InfoWindow 
-        position={{ lat: fetchedSelected.lat, lng: fetchedSelected.lng }}
+        position={{ lat: likedSelected.lat, lng: likedSelected.lng }}
         onCloseClick={() => {
-          setFetchedSelected(null);
+          setLikedSelected(null);
         }}
       >
         <div className="fetched-window">
           <div className="infophoto-div">
-            <img className="infowindow-photo" src={fetchedSelected.photo} />
+            <img className="infowindow-photo" src={likedSelected.photo} />
           </div>       
-          <Title level={5}>{fetchedSelected.title} 
+          <Title level={5}>{likedSelected.title} 
             <LikeTile
               currentUser={currentUser} 
-              fetchedSelected={fetchedSelected}
-              addNewLike={addNewLike}
-              removeLike={removeLike}
+              fetchedSelected={likedSelected}
             />
           </Title> 
-          <p>by {fetchedSelected.user.userName}</p>
-          <p>{fetchedSelected.caption}</p>
+          <p>by {likedSelected.user.userName}</p>
+          <p>{likedSelected.caption}</p>
           
         </div>
       </InfoWindow>
@@ -66,4 +62,4 @@ const PersistedMarkers = ({ fetchedMarkers, panTo, markerIcon, addNewLike, remov
   )
 }
 
-export default PersistedMarkers
+export default MapLikedMarkers
