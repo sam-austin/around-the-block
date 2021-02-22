@@ -98,7 +98,6 @@ const IndexMarkers = ({ setMarker, marker, panTo }) => {
       if (responseBody.serializedLike) {
         let newLikedMarkers = fetchedMarkers.map(fetchedMarker => {
           if (fetchedMarker.id == responseBody.serializedLike.markerId) {
-
             fetchedMarker.likes.push(responseBody.serializedLike)
           }
           return fetchedMarker
