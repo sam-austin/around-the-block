@@ -9,6 +9,7 @@ import {
 import SearchPlacesBar from "./SearchPlacesBar"
 import LocateUser from "./LocateUser"
 import PersistedMarkers from "./PersistedMarkers"
+import MapLikedMarkers from  "./MapLikedMarkers"
 
 const libraries = ["places"]
 
@@ -26,7 +27,7 @@ const options = {
   zoomControl:true,
 }
 
-const PersonalMap = ({ userMarkers, markerIcon }) => {
+const PersonalMap = ({ userMarkers, likedMarkers, markerIcon }) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyBreZf4DTUyZTEkQEig023fllmvbcnSOKs",
     libraries,
@@ -64,7 +65,13 @@ const PersonalMap = ({ userMarkers, markerIcon }) => {
             fetchedMarkers={userMarkers}
             markerIcon={markerIcon}
             panTo={panTo}
-          />    
+          />
+
+          <MapLikedMarkers 
+            likedMarkers={likedMarkers} 
+            markerIcon={markerIcon}
+            panTo={panTo}
+            />    
 
           <LocateUser panTo={panTo} />
 

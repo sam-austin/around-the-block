@@ -51,7 +51,7 @@ const MapLegend = props => {
         <Menu.Item 
           key="3" 
           disabled
-          icon={<img src="https://around-the-block.s3.amazonaws.com/red-svg-marker-ed.png"
+          icon={<img src="https://around-the-block.s3.amazonaws.com/purple-svg-marker.png"
           className="map-legend-marker"
           />}
         >

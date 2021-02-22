@@ -48,7 +48,6 @@ const ProfilePage = props => {
         throw error
       }
       const responseBody = await response.json()
-      debugger
       setLikedMarkers(responseBody.likedMarkers)
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
@@ -96,14 +95,14 @@ const ProfilePage = props => {
             top:64,
           }}
           >
-          <Tabs defaultActiveKey="1" type="card" size="large">
-          <TabPane tab="My Photos" key="1">
-          {markersDisplay}
-          </TabPane>
-          <TabPane tab="Liked Photos" key="2">
-          {likedMarkersDisplay}
-          </TabPane>
-            </Tabs>
+          <Tabs defaultActiveKey="1" type="card" size="default">
+            <TabPane tab="My Photos" key="1">
+            {markersDisplay}
+            </TabPane>
+            <TabPane tab="Liked Photos" key="2">
+            {likedMarkersDisplay}
+            </TabPane>
+          </Tabs>
         </Sider>
       <Layout style={{ padding: '0 0 0 392px'}} className="site-layout-background grid-container">
         <Content 
@@ -115,6 +114,7 @@ const ProfilePage = props => {
           <PersonalMap 
           className="site-layout-background"
           userMarkers={userMarkers} 
+          likedMarkers={likedMarkers}
           markerIcon={markerIcon} 
           />
         </Content>
