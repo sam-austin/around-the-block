@@ -24,4 +24,4 @@ Installs dependencies
 Creates and migrates the databse (must be run from the server directory)
 
 #### `yarn dev`
-Starts the Node.js server
+Starts the Node.js server. This application can be accessed locally at http://localhost:3000
