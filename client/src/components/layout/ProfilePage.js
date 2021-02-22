@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react"
-import { Layout } from 'antd';
+import { Layout, Tabs } from 'antd';
 const { Content, Header, Sider } = Layout;
+const { TabPane } = Tabs;
 
 import PersonalMap from "./PersonalMap"
 import ProfileMarkersTile from "./ProfileMarkersTile"
+import LikedMarkersTile from "./LikedMarkersTile"
 
 const ProfilePage = props => {
   const [userMarkers, setUserMarkers] = useState([])
+  const [likedMarkers, setLikedMarkers] = useState([])
 
   const getMarkers = async () => {
     try {
@@ -36,6 +39,35 @@ const ProfilePage = props => {
     )
   })
 
+  const getLikedMarkers = async () => {
+    try {
+      const response = await fetch("/api/v1/user-markers/likes")
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        const error = new Error(errorMessage)
+        throw error
+      }
+      const responseBody = await response.json()
+      debugger
+      setLikedMarkers(responseBody.likedMarkers)
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
+
+  useEffect(() => {
+    getLikedMarkers()
+  }, [])
+
+  const likedMarkersDisplay = likedMarkers.map(likedMarker => {
+      return(
+        <LikedMarkersTile
+          key={`${likedMarker.lat} - ${likedMarker.lng}`}
+          likedMarker={likedMarker}
+        />  
+      )
+    })
+
   const markerIcon = color => {
     return ({
       path:
@@ -64,7 +96,14 @@ const ProfilePage = props => {
             top:64,
           }}
           >
-            {markersDisplay} 
+          <Tabs defaultActiveKey="1" type="card" size="large">
+          <TabPane tab="My Photos" key="1">
+          {markersDisplay}
+          </TabPane>
+          <TabPane tab="Liked Photos" key="2">
+          {likedMarkersDisplay}
+          </TabPane>
+            </Tabs>
         </Sider>
       <Layout style={{ padding: '0 0 0 392px'}} className="site-layout-background grid-container">
         <Content 
