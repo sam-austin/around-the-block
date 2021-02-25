@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react"
 import { Marker, InfoWindow } from "@react-google-maps/api"
 import getCurrentUser from "../../services/getCurrentUser"
 import LikeTile from "./LikeTile"
+import MarkerIcon from "../../functions/MarkerIcon"
 
 import { Typography } from 'antd';
 const { Title } = Typography;
 
-const PersistedMarkers = ({ fetchedMarkers, panTo, markerIcon, addNewLike, removeLike }) => {
+const PersistedMarkers = ({ fetchedMarkers, panTo, addNewLike, removeLike }) => {
   const [fetchedSelected, setFetchedSelected] = useState(null)
   const [currentUser, setCurrentUser] = useState({});
 
@@ -27,8 +28,8 @@ const PersistedMarkers = ({ fetchedMarkers, panTo, markerIcon, addNewLike, remov
         key={`${marker.lat} - ${marker.lng}`}
         position={{ lat: marker.lat, lng: marker.lng }}
         icon={marker.userId == currentUser.id ? (
-          markerIcon("blue", 0.6)
-        ) : markerIcon("purple", 0.6)}
+          MarkerIcon("blue", 0.6)
+        ) : MarkerIcon("purple", 0.6)}
         onClick = {() => {
           setFetchedSelected(null)
           setFetchedSelected(marker)
