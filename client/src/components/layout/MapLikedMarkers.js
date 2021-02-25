@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react"
 import { Marker, InfoWindow } from "@react-google-maps/api"
-import getCurrentUser from "../../services/getCurrentUser"
-import LikeTile from "./LikeTile"
-
 import { Typography } from 'antd';
 const { Title } = Typography;
 
-const MapLikedMarkers = ({ likedMarkers, panTo, markerIcon }) => {
+import getCurrentUser from "../../services/getCurrentUser"
+import LikeTile from "./LikeTile"
+import MarkerIcon from "../../functions/MarkerIcon"
+
+const MapLikedMarkers = ({ likedMarkers, panTo }) => {
   const [likedSelected, setLikedSelected] = useState(null)
   const [currentUser, setCurrentUser] = useState({});
 
@@ -26,7 +27,7 @@ const MapLikedMarkers = ({ likedMarkers, panTo, markerIcon }) => {
       <Marker 
         key={`${marker.lat} - ${marker.lng}`}
         position={{ lat: marker.lat, lng: marker.lng }}
-        icon={markerIcon("red")}
+        icon={MarkerIcon("red", 0.6)}
         onClick = {() => {
           setLikedSelected(null)
           setLikedSelected(marker)

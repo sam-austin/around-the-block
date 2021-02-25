@@ -27,7 +27,7 @@ const options = {
   zoomControl:true,
 }
 
-const PersonalMap = ({ userMarkers, likedMarkers, markerIcon }) => {
+const PersonalMap = ({ userMarkers, likedMarkers }) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyBreZf4DTUyZTEkQEig023fllmvbcnSOKs",
     libraries,
@@ -63,13 +63,11 @@ const PersonalMap = ({ userMarkers, likedMarkers, markerIcon }) => {
 
           <PersistedMarkers
             fetchedMarkers={userMarkers}
-            markerIcon={markerIcon}
             panTo={panTo}
           />
 
           <MapLikedMarkers 
             likedMarkers={likedMarkers} 
-            markerIcon={markerIcon}
             panTo={panTo}
             />    
 
