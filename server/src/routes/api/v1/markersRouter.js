@@ -18,6 +18,19 @@ markersRouter.get("/", async (req, res) => {
   }
 })
 
+markersRouter.get("/:id", async (req, res) => {
+  const id = req.params.id
+
+  try {
+    const marker = await Marker.query().findById(id)
+    const serializedMarker = await MarkerSerializer.getSummary(marker)
+    return res.status(200).json({ serializedMarker })
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({ errors: error })
+  }
+})
+
 markersRouter.post("/", upload.single("photo"), async (req, res) => {
   const body = req.body
   const cleanBody = cleanUserInput(body)
