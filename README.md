@@ -2,7 +2,7 @@
 
 As we have all been stuck inside during the COVID-19 pandemic, it has become so important for us to take the time to go outside, breathe fresh air, and walk around. As someone who recently moved to a new neighborhood, I also realized it’s a great opportunity to explore my immediate neighborhood, you know, around the block. That's what led me to build my personal project <b>Around the Block</b>.
 
-![me](https://gph.is/g/ZdjO9pW)
+![me](https://media.giphy.com/media/iPCmX9z4UZxN4jyo0g/giphy.gif)
 
 Around the Block is a photo sharing web app that allows a user to pin photos around their neighborhood to the specific locations on the map and explore what others have shared as well. As demonstrated above, it allows a user to seamlessly upload photos directly within the Google Maps marker windows and immediately view it!
 
