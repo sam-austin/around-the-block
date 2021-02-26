@@ -36,9 +36,9 @@ I began to envision a photo-sharing app where a photo is tied to a specific loca
 ![myphotos](https://media.giphy.com/media/4b32pc6L3KBRBfOwXf/giphy.gif)
 - My Photos tab: View the photos uploaded by you
 - Liked Photos tab: View the photos “liked” by you
-- Use the map to explore as well
+- Use the personal map to explore as well
 
-This application uses React Dropzone, Combobox, Ant Design, and Foundation as well.
+This application also uses React Dropzone, Combobox, Ant Design, and Foundation.
 
 [Click here visit Around the Block's Heroku page](https://around-the-block.herokuapp.com/)
 
