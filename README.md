@@ -1,5 +1,4 @@
 <h1 align="center">
-  <br>
   <img src="https://around-the-block.s3.amazonaws.com/Pink+Logo.png" alt="ABT" width="100">
   <br>
   Around the Block
@@ -7,14 +6,14 @@
 </h1>
 
 ## Motivation
-As many of us are stuck inside during the COVID-19 pandemic, it is important to take time to go outside, breathe fresh air, and walk around. During this time, I have had the opportunity to explore my neighborhood, you know, around the block. I started seeing all these unique or even trivial things that I had never noticed before. I wanted a way to capture and share with others what I have been observing. 
+As many of us are stuck inside during the COVID-19 pandemic, it has become important to take time to go outside, breathe fresh air, and walk around. During this time, I have had the opportunity to explore my neighborhood, you know, around the block. I started seeing all these unique or even trivial things that I had never noticed before. I wanted a way to capture and share with others what I have been observing in my neighborhood. 
 
-I began to envision a neighborhood photo-sharing app where a photo is tied to a specific location on the map. I wondered whether I could manipulate a map marker to allow users to not only place it on the map but also directly upload a photo to it. So I began coding to find out. 
+I began to envision a photo-sharing app where a photo is tied to a specific location on the map. I wondered whether I could manipulate a map marker to allow users to not only place it on the map but also directly upload a photo to it. So I began coding to find out. 
 
 ## Built with
 - React
 - Node.js/Express
-- PostgresSQL
+- PostgreSQL
 
 ## Key Features
 
@@ -24,7 +23,7 @@ I began to envision a neighborhood photo-sharing app where a photo is tied to a 
 - Select the placed marker
 - Fill in the form, drag a photo into the drop zone
 - Submit!
-- The photo is immediately accessible within the marker
+- The photo is immediately accessible in the marker
 
 ### Map page - Explore
 ![explore](https://media.giphy.com/media/7dS31xSF9pHJC32TQt/giphy.gif)
