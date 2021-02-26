@@ -2,7 +2,7 @@ import React from "react"
 import { Card } from 'antd';
 const { Meta } = Card;
 
-const ProfileMarkersTile = props => {
+const ProfileMarkersTile = ({ marker }) => {
 
   return(
     <Card
@@ -11,7 +11,7 @@ const ProfileMarkersTile = props => {
       cover={
         <img 
           alt="user photo" 
-          src={props.userMarker.photo} 
+          src={marker.photo} 
           style={{ 
             objectFit: "cover",
             width: "340px",
@@ -19,12 +19,12 @@ const ProfileMarkersTile = props => {
           }}
         />
       }
-      title={props.userMarker.title}
+      title={marker.title}
     >
       <Meta 
-      description={props.userMarker.user.userName}
+      description={marker.user.userName}
       />
-      <p>{props.userMarker.caption}</p>
+      <p>{marker.caption}</p>
     </Card>
   )
 }

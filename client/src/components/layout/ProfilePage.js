@@ -5,13 +5,12 @@ const { TabPane } = Tabs;
 
 import PersonalMap from "./PersonalMap"
 import ProfileMarkersTile from "./ProfileMarkersTile"
-import LikedMarkersTile from "./LikedMarkersTile"
 
 const ProfilePage = props => {
   const [userMarkers, setUserMarkers] = useState([])
   const [likedMarkers, setLikedMarkers] = useState([])
 
-  const getMarkers = async () => {
+  const getUserMarkers = async () => {
     try {
       const response = await fetch("/api/v1/user-markers")
       if (!response.ok) {
@@ -27,14 +26,14 @@ const ProfilePage = props => {
   }
 
   useEffect(() => {
-    getMarkers()
+    getUserMarkers()
   }, [])
 
   const markersDisplay = userMarkers.map(userMarker => {
     return(
       <ProfileMarkersTile
         key={`${userMarker.lat} - ${userMarker.lng}`}
-        userMarker={userMarker}
+        marker={userMarker}
       />  
     )
   })
@@ -58,12 +57,59 @@ const ProfilePage = props => {
     getLikedMarkers()
   }, [])
 
+  const addNewLikeProfile = async (liked) => {
+    try {
+      const response = await fetch(`/api/v1/markers/likes`, {
+        method: "POST",
+        headers: new Headers({
+          "Content-Type": "application/json"
+        }),
+        body: JSON.stringify(liked)
+      })
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        const error = new Error(errorMessage)
+        throw(error)
+      }
+      const responseBody = await response.json()
+      if (responseBody) {
+        getLikedMarkers()
+      }
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
+
+  const removeLike = async (markerInfo) => {
+    try {
+      const response = await fetch(`/api/v1/markers/likes`, 
+      {
+        method: "PATCH",
+        headers: new Headers({
+          "Content-Type": "application/json"
+        }),
+        body: JSON.stringify(markerInfo)
+      })
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        const error = new Error(errorMessage)
+        throw(error)
+      }
+      const responseBody = await response.json()
+      if (responseBody) {
+        getLikedMarkers()
+      }
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
+
   const likedMarkersDisplay = likedMarkers.map(likedMarker => {
       return(
-        <LikedMarkersTile
+        <ProfileMarkersTile
           key={`${likedMarker.lat} - ${likedMarker.lng}`}
-          likedMarker={likedMarker}
-        />  
+          marker={likedMarker}
+      />    
       )
     })
 
@@ -99,9 +145,11 @@ const ProfilePage = props => {
           }}>
           
           <PersonalMap 
-          className="site-layout-background"
-          userMarkers={userMarkers} 
-          likedMarkers={likedMarkers}
+            className="site-layout-background"
+            userMarkers={userMarkers} 
+            likedMarkers={likedMarkers}
+            addNewLikeProfile={addNewLikeProfile}
+            removeLike={removeLike}
           />
         </Content>
       </Layout>

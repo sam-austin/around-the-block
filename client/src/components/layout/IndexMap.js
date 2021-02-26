@@ -9,7 +9,7 @@ import {
 } from "@react-google-maps/api";
 
 import SearchPlacesBar from "./SearchPlacesBar"
-import IndexMarkers from "./IndexMarkers"
+import IndexMarkerSetup from "./IndexMarkerSetup"
 import LocateUser from "./LocateUser"
 import MapLegend from "./MapLegend"
 
@@ -83,7 +83,7 @@ const IndexMap = props => {
         >
           <SearchPlacesBar panTo={panTo} />
 
-          <IndexMarkers panTo={panTo} marker={marker} setMarker={setMarker} />
+          <IndexMarkerSetup panTo={panTo} marker={marker} setMarker={setMarker} />
 
           <LocateUser panTo={panTo} />
 

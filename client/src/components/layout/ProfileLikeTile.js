@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"
+
 import { Button } from 'antd';
 import { HeartFilled, HeartTwoTone } from '@ant-design/icons'
 
-const LikeTile = ({ fetchedSelected, currentUser, addNewLike, removeLike }) => {
+const ProfileLikeTile = ({ fetchedSelected, currentUser, addNewLikeProfile, removeLike }) => {
   const [likedPhoto, setLikedPhoto] = useState(false)
 
   useEffect(() => {
@@ -32,7 +33,7 @@ const LikeTile = ({ fetchedSelected, currentUser, addNewLike, removeLike }) => {
   const onClickLikeHandler = event => {
     event.preventDefault()
     if (likedPhoto === false) {
-      addNewLike({ liked: 1, markerId: fetchedSelected.id })
+      addNewLikeProfile({ liked: 1, markerId: fetchedSelected.id })
       setLikedPhoto(true)
     } else if (likedPhoto === true) {
       removeLike({ markerId: fetchedSelected.id })
@@ -51,7 +52,7 @@ const LikeTile = ({ fetchedSelected, currentUser, addNewLike, removeLike }) => {
   )
 }
 
-export default LikeTile
+export default ProfileLikeTile
 
 
 
