@@ -4,10 +4,9 @@ import { Typography } from 'antd';
 const { Title } = Typography;
 
 import getCurrentUser from "../../services/getCurrentUser"
-import ProfileLikeTile from "./ProfileLikeTile"
-import MarkerIcon from "../../functions/MarkerIcon"
+import LikeTile from "./LikeTile"
 
-const ProfileLikedMarkers = ({ likedMarkers, panTo, addNewLikeProfile, removeLike }) => {
+const ProfileLikedMarkersList = ({ likedMarkers, panTo, addNewLike, removeLike }) => {
   const [selected, setSelected] = useState(null)
   const [currentUser, setCurrentUser] = useState({});
 
@@ -42,7 +41,12 @@ const ProfileLikedMarkers = ({ likedMarkers, panTo, addNewLikeProfile, removeLik
       <Marker 
         key={`${marker.lat} - ${marker.lng}`}
         position={{ lat: marker.lat, lng: marker.lng }}
-        icon={MarkerIcon("red", 0.6)}
+        icon={{
+          url: "https://around-the-block.s3.amazonaws.com/heart-icon.svg",
+          origin: new window.google.maps.Point(0, 0),
+          anchor: new google.maps.Point(16, 31),
+          scaledSize: new window.google.maps.Size(30, 30),
+        }}
         onClick = {() => {
           setSelected(null)
           getMarker(marker)
@@ -62,13 +66,16 @@ const ProfileLikedMarkers = ({ likedMarkers, panTo, addNewLikeProfile, removeLik
           <div className="infophoto-div">
             <img className="infowindow-photo" src={selected.photo} />
           </div>       
-          <Title level={5}>{selected.title} 
-            <ProfileLikeTile
+          <Title level={5}>
+            {selected.title} 
+            {selected.userId !== currentUser.id ? (
+              <LikeTile
               currentUser={currentUser} 
               fetchedSelected={selected}
-              addNewLikeProfile={addNewLikeProfile}
+              addNewLike={addNewLike}
               removeLike={removeLike}
-            />
+              />
+            ) : null}
           </Title> 
           <p>by {selected.user.userName}</p>
           <p>{selected.caption}</p>
@@ -80,4 +87,4 @@ const ProfileLikedMarkers = ({ likedMarkers, panTo, addNewLikeProfile, removeLik
   )
 }
 
-export default ProfileLikedMarkers
+export default ProfileLikedMarkersList

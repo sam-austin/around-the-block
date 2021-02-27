@@ -57,7 +57,7 @@ const ProfilePage = props => {
     getLikedMarkers()
   }, [])
 
-  const addNewLikeProfile = async (liked) => {
+  const addNewLike = async (liked) => {
     try {
       const response = await fetch(`/api/v1/markers/likes`, {
         method: "POST",
@@ -148,7 +148,7 @@ const ProfilePage = props => {
             className="site-layout-background"
             userMarkers={userMarkers} 
             likedMarkers={likedMarkers}
-            addNewLikeProfile={addNewLikeProfile}
+            addNewLike={addNewLike}
             removeLike={removeLike}
           />
         </Content>
