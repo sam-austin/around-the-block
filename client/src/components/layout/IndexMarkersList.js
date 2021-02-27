@@ -94,7 +94,7 @@ const IndexMarkersList = ({ panTo, fetchedMarkers }) => {
         position={{ lat: marker.lat, lng: marker.lng }}
         icon={marker.userId == currentUser.id ? (
           MarkerIcon("blue", 0.6)
-        ) : MarkerIcon("purple", 0.6)}
+        ) : MarkerIcon("red", 0.6)}
         onClick = {() => {
           setFetchedSelected(null)
           getMarker(marker)
@@ -114,13 +114,16 @@ const IndexMarkersList = ({ panTo, fetchedMarkers }) => {
           <div className="infophoto-div">
             <img className="infowindow-photo" src={fetchedSelected.photo} />
           </div>       
-          <Title level={5}>{fetchedSelected.title} 
-            <LikeTile
+          <Title level={5}>
+            {fetchedSelected.title} 
+            {fetchedSelected.userId !== currentUser.id ? (
+              <LikeTile
               currentUser={currentUser} 
               fetchedSelected={fetchedSelected}
               addNewLike={addNewLike}
               removeLike={removeLike}
-            />
+              />
+            ) : null}
           </Title> 
           <p>by {fetchedSelected.user.userName}</p>
           <p>{fetchedSelected.caption}</p>

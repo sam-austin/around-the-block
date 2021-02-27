@@ -14,8 +14,8 @@ const LandingPage = props => {
         </div>
       </Content>
     <Footer style={{ textAlign: 'center' }}>
-      <div>
-        Map icon provided by  <a href="https://www.flaticon.com/authors/dinosoftlabs" title="DinosoftLabs">  DinosoftLabs</a>  from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+      <div className="attr-text">
+        Map icons provided by  <a href="https://www.flaticon.com/authors/dinosoftlabs" title="DinosoftLabs">  DinosoftLabs</a> and <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
       </div> 
     </Footer>
   </Layout>

@@ -9,7 +9,7 @@ import {
 import SearchPlacesBar from "./SearchPlacesBar"
 import LocateUser from "./LocateUser"
 import ProfileUserMarkersList from "./ProfileUserMarkersList"
-import ProfileLikedMarkers from  "./ProfileLikedMarkers"
+import ProfileLikedMarkersList from  "./ProfileLikedMarkersList"
 
 const libraries = ["places"]
 
@@ -27,7 +27,7 @@ const options = {
   zoomControl:true,
 }
 
-const PersonalMap = ({ userMarkers, likedMarkers, addNewLikeProfile, removeLike }) => {
+const PersonalMap = ({ userMarkers, likedMarkers, addNewLike, removeLike }) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyBreZf4DTUyZTEkQEig023fllmvbcnSOKs",
     libraries,
@@ -64,14 +64,14 @@ const PersonalMap = ({ userMarkers, likedMarkers, addNewLikeProfile, removeLike 
           <ProfileUserMarkersList
             userMarkers={userMarkers}
             panTo={panTo}
-            addNewLikeProfile={addNewLikeProfile}
+            addNewLike={addNewLike}
             removeLike={removeLike}
           />
 
-          <ProfileLikedMarkers 
+          <ProfileLikedMarkersList 
             likedMarkers={likedMarkers} 
             panTo={panTo}
-            addNewLikeProfile={addNewLikeProfile}
+            addNewLike={addNewLike}
             removeLike={removeLike}
           />    
 

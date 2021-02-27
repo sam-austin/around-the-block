@@ -4,10 +4,10 @@ import { Typography } from 'antd';
 const { Title } = Typography;
 
 import getCurrentUser from "../../services/getCurrentUser"
-import ProfileLikeTile from "./ProfileLikeTile"
+import LikeTile from "./LikeTile"
 import MarkerIcon from "../../functions/MarkerIcon"
 
-const ProfileUserMarkersList = ({ userMarkers, panTo, addNewLikeProfile, removeLike }) => {
+const ProfileUserMarkersList = ({ userMarkers, panTo, addNewLike, removeLike }) => {
   const [selected, setSelected] = useState(null)
   const [currentUser, setCurrentUser] = useState({});
 
@@ -62,14 +62,7 @@ const ProfileUserMarkersList = ({ userMarkers, panTo, addNewLikeProfile, removeL
           <div className="infophoto-div">
             <img className="infowindow-photo" src={selected.photo} />
           </div>       
-          <Title level={5}>{selected.title} 
-            <ProfileLikeTile
-              currentUser={currentUser} 
-              fetchedSelected={selected}
-              addNewLikeProfile={addNewLikeProfile}
-              removeLike={removeLike}
-            />
-          </Title> 
+          <Title level={5}>{selected.title}</Title> 
           <p>by {selected.user.userName}</p>
           <p>{selected.caption}</p>
           
