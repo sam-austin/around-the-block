@@ -91,6 +91,7 @@ const IndexMarkerSetup = ({ setMarker, marker, panTo }) => {
         onCloseClick={() => {
           setSelected(null);
         }}
+        options={{pixelOffset: new google.maps.Size(-2, -25)}}
       >
         <div className="form">
           <InfoWindowForm 

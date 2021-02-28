@@ -57,6 +57,7 @@ const ProfileUserMarkersList = ({ userMarkers, panTo, addNewLike, removeLike }) 
         onCloseClick={() => {
           setSelected(null);
         }}
+        options={{pixelOffset: new google.maps.Size(-2, -25)}}
       >
         <div className="fetched-window">
           <div className="infophoto-div">
