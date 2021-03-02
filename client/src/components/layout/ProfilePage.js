@@ -125,7 +125,7 @@ const ProfilePage = props => {
             height: "91vh",
             position: 'fixed',
             left: 12,
-            top:64,
+            top:64.5,
           }}
           >
           <Tabs defaultActiveKey="1" type="card" size="default">

@@ -165,25 +165,63 @@ body {
   background: #fff;
 }
 
+.ant-layout-header {
+  color: white;
+  background: white;
+}
+
+.ant-menu-horizontal {
+  border-bottom: 0px;
+}
+
 .landing-page {
-  padding: 24px;
-  min-height: 80vh;
-  background: url(https://images.unsplash.com/photo-1533875616-f804380c6b6e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80);
-  background-size: cover;
-  background-attachment: fixed;
-  min-height: 100vh;
-  min-width: 100vw;
+  background: url(https://around-the-block.s3.amazonaws.com/landing-photo-edited.png);
+  background-size: contain;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  min-height: 95vh;
+  background-position-y: 12vh;
+}
+
+.landing-text {
+  line-height: .84;
+  z-index: 1;
+  display: grid;
+  justify-content: left;
+  padding: 2.5vh 0 0 42px;
 }
 
 .landing-title {
-  font-family: Poppins, sans-serif;
-  color:#fa8072;
-  font-size: 9vh;
-  display: flex;
-  justify-content: center;
+  font: 700 15px/1 sofia-pro,sans-serif;
+  color: #365ca3;
+  letter-spacing: -4px;
+  font-size: 62px;
+  align-items: top;
+  margin: 0 auto 15px;
+  line-height: .84
+}
+
+.landing-subheader {
+  font-family: sofia-pro,sans-serif;
+  font-size: 20px;
+  color: #08142c;
   align-items: center;
-  height: 55vh;
-  text-shadow: 1px 1px 1px #001529;
+  padding-left: 5px;
+  padding-bottom: 13px;
+}
+
+.get-started-button {
+  align-items: center;
+  padding-left: 3px;
+}
+
+.get-started-text {
+  font-size: 30px;
+}
+
+.landing-bg {
+  background-color: white;
+  padding: 24px;
 }
 
 .form {
@@ -201,6 +239,11 @@ body {
 
 .rounded-button {
   border-radius: 5px;
+}
+
+.rounded-button-extra {
+  border-radius: 80px;
+  padding: 0.7em 1.5em;
 }
 
 .grid-container {

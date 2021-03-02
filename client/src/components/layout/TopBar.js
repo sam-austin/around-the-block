@@ -37,10 +37,10 @@ const TopBar = ({ user }) => {
 
   return (
     <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-      <Menu theme="dark" mode="horizontal" style={{fontSize: "15.5px"}}>
+      <Menu mode="horizontal" style={{fontSize: "16px"}}>
         <Menu.Item key="1" style={{float: "left"}}>
           <Link to="/">
-            <div className="logo"><img src="https://around-the-block.s3.amazonaws.com/ABTPink-text-ht-adj12.png"/></div>
+            <div className="logo"><img src="https://around-the-block.s3.amazonaws.com/ABT-allpink-cr.png"/></div>
           </Link>
         </Menu.Item>
         {user ? authenticatedListItems : unauthenticatedListItems}
