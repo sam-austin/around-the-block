@@ -179,16 +179,16 @@ body {
   background-size: contain;
   background-attachment: scroll;
   background-repeat: no-repeat;
-  min-height: 95vh;
+  height: 85vh;
   background-position-y: 12vh;
+  margin: 0 5em;
 }
 
 .landing-text {
   line-height: .84;
   z-index: 1;
-  display: grid;
-  justify-content: left;
-  padding: 2.5vh 0 0 42px;
+  padding-top: 2.5vh;
+  margin-left: -28px;
 }
 
 .landing-title {
@@ -212,7 +212,6 @@ body {
 
 .get-started-button {
   align-items: center;
-  padding-left: 3px;
 }
 
 .get-started-text {
@@ -222,6 +221,33 @@ body {
 .landing-bg {
   background-color: white;
   padding: 24px;
+}
+
+.landing-subsection {
+  background-color: white;
+  padding: 0 70px;
+  margin: 0 7em;
+}
+
+.subsection-title {
+  font: 600 15px/1 sofia-pro,sans-serif;
+  color: #365ca3;
+  letter-spacing: -3px;
+  font-size: 40px;
+}
+
+.landing-subsection img {
+  margin-bottom: 50px;
+  max-height: 290px;
+}
+
+.subsection p {
+  font-size: 18px;
+}
+
+.subsection-img-left {
+  display:flex;
+  justify-content: center;
 }
 
 .form {
