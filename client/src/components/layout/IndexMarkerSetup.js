@@ -8,7 +8,6 @@ import MarkerIcon from "../../functions/MarkerIcon"
 import OpenNotificationWithIcon from "../../functions/OpenNotification"
 
 const IndexMarkerSetup = ({ setMarker, marker, panTo }) => {
-  const [selected, setSelected] = useState(null)
   const [fetchedMarkers, setFetchedMarkers] = useState([])
   const [errors, setErrors] = useState({})
 
@@ -63,7 +62,6 @@ const IndexMarkerSetup = ({ setMarker, marker, panTo }) => {
           bodyResponse.newSerializedMarker
         ])
         OpenNotificationWithIcon("success")
-        setSelected(null)
         setMarker(null)
       }
     } catch (error) {
@@ -79,23 +77,22 @@ const IndexMarkerSetup = ({ setMarker, marker, panTo }) => {
         position={{ lat: marker.lat, lng: marker.lng }}
         icon={MarkerIcon("blue", 0.6)}
         onClick = {() => {
-          setSelected(marker)
           setErrors({})
         }}
-        panTo={panTo}
-    />) : null}  
+        panTo={panTo}/>
+    ) : null}  
 
-    {selected ? (
+    {marker !== null ? (
       <InfoWindow 
-        position={{ lat: selected.lat, lng: selected.lng }}
+        position={{ lat: marker.lat, lng: marker.lng }}
         onCloseClick={() => {
-          setSelected(null);
+          setMarker(null);
         }}
         options={{pixelOffset: new google.maps.Size(-2, -25)}}
       >
         <div className="form">
           <InfoWindowForm 
-            selected={selected}
+            selected={marker}
             addNewMarker={addNewMarker}
             errors={errors}
           />
