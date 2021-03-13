@@ -1,8 +1,9 @@
 <h1 align="center">
-  <img src="https://around-the-block.s3.amazonaws.com/Pink+Logo.png" alt="ABT" width="100">
+  <img src="https://around-the-block.s3.amazonaws.com/Pink+Logo.png" alt="ABT" width="70" />
   <br>
   Around the Block
   <br>
+  <img src="https://around-the-block.s3.amazonaws.com/Screen+Shot+2021-03-13+at+10.54.20+AM.png" alt="landing" width="600" />
 </h1>
 
 ## Motivation
@@ -20,8 +21,7 @@ I began to envision a photo-sharing app where a photo is tied to a specific loca
 ### Map page - Upload a photo
 ![upload](https://media.giphy.com/media/YARjlvcu2On1Y0r8LS/giphy.gif)
 - Click on the map to place a marker
-- Select the placed marker
-- Fill in the form, drag a photo into the drop zone
+- Drag a photo into the drop zone
 - Submit!
 - The photo is immediately accessible in the marker
 
@@ -29,7 +29,7 @@ I began to envision a photo-sharing app where a photo is tied to a specific loca
 ![explore](https://media.giphy.com/media/7dS31xSF9pHJC32TQt/giphy.gif)
 - Use the search bar to look up a place
 - Click the Geolocation button to bring the map to your location
-- View photos shared by others by clicking the markers
+- View shared photos by clicking the markers
 - “Like” a photo to save it to your personal page
 
 ### My Photos page - Your personal page
