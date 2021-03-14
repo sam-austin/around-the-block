@@ -182,9 +182,11 @@ body {
   background-size: contain;
   background-attachment: scroll;
   background-repeat: no-repeat;
-  height: 85vh;
-  background-position-y: 12vh;
-  margin: 0 5em;
+  height: 75vh;
+  background-position: bottom;
+  margin: 0 5em 5em;
+  background-color: white;
+  padding: 24px;
 }
 
 .landing-text {
@@ -200,7 +202,8 @@ body {
   font-size: 62px;
   align-items: top;
   margin: 0 auto 15px;
-  line-height: .84
+  line-height: .84;
+  word-spacing:-10px;
 }
 
 .landing-subheader {
@@ -220,14 +223,8 @@ body {
   font-size: 30px;
 }
 
-.landing-bg {
-  background-color: white;
-  padding: 24px;
-}
-
 .landing-subsection {
   background-color: white;
-  padding: 0 70px;
   margin: 0 7em;
 }
 
@@ -240,16 +237,16 @@ body {
 
 .landing-subsection img {
   margin-bottom: 50px;
-  max-height: 290px;
+  max-height: 270px;
 }
 
 .subsection p {
   font-size: 18px;
+  margin-bottom: 50px;
 }
 
-.subsection-img-left {
-  display:flex;
-  justify-content: center;
+.subsection-img-div {
+  align-self: center;
 }
 
 .form {
