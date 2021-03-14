@@ -23,9 +23,9 @@ const LandingPage = props => {
     <Layout className="layout">
       <Header></Header>
       <Content style={{ backgroundColor: "white" }}>
-        <div className="landing-page landing-bg">
+        <div className="landing-page">
           <div className="landing-text">
-            <h1 className="landing-title">Capture.Share.Explore.</h1>
+            <h1 className="landing-title">Capture. Share. Explore.</h1>
             <p className="landing-subheader">
               Upload photos around your neighborhood directly on the map!
             </p>
