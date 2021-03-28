@@ -249,6 +249,21 @@ body {
   align-self: center;
 }
 
+.dev-card {
+  align-items: center;
+  justify-content: center;
+}
+
+.dev-card img {
+  margin: 0;
+  width: 150px;
+  border-radius: 150px
+}
+
+.footer-title {
+  color: #365ca3;
+}
+
 .form {
   max-height: 300px;
   max-width: 300px;

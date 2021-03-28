@@ -5,6 +5,7 @@ const { Header, Content, Footer } = Layout;
 
 import getCurrentUser from "../../services/getCurrentUser";
 import FeatureDescriptions from "./FeatureDescriptions"
+import FooterDescription from "./FooterDescription"
 
 const LandingPage = props => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -42,7 +43,8 @@ const LandingPage = props => {
         </div>
       </Content>
       <FeatureDescriptions />
-    <Footer style={{ textAlign: 'center', padding: "5px"}}>
+    <Footer style={{ textAlign: "center" }}>
+      <FooterDescription />
       <div className="attr-text">
         <p>
           Vector illustrations provided by <a href='https://www.freepik.com/vectors'> pch.vector, katemangostar, & rawpixel.com</a>
