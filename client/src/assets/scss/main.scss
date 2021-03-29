@@ -249,19 +249,24 @@ body {
   align-self: center;
 }
 
-.dev-card {
+.footer-title {
+  color: #365ca3;
+}
+
+.footer-dev {
+  display: flex;
+  text-align: left;
   align-items: center;
-  justify-content: center;
+  padding-bottom: 15px;
+}
+
+.dev-card {
+  width: 250px;
 }
 
 .dev-card img {
   margin: 0;
-  width: 150px;
   border-radius: 150px
-}
-
-.footer-title {
-  color: #365ca3;
 }
 
 .form {
