@@ -11,7 +11,9 @@ As many of us are stuck inside during the COVID-19 pandemic, it has become impor
 
 I began to envision a photo-sharing app where a photo is tied to a specific location on the map. I wondered whether I could manipulate a map marker to allow users to not only place it on the map but also directly upload a photo to it. So I began coding to find out. 
 
-[Click here visit Around the Block's Heroku page](https://around-the-block.herokuapp.com/)
+[Click here visit Around the Block's Heroku page](https://around-the-block.herokuapp.com/) <br>
+Demo account: samson.park1@gmail.com <br>
+Demo password: 123123
 
 ## Built with
 - React
